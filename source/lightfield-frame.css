@@ -1,0 +1,7 @@
+.lf-surface{position:relative;width:100%;aspect-ratio:16/9;isolation:isolate;overflow:hidden;background:#0B101A;container-type:inline-size;}
+.lf-surface[data-transparent=true]{background:transparent;}
+.lf-surface>svg{display:block;width:100%;height:100%;overflow:hidden;}
+.lf-surface svg text{font-family:OPCSans,"PingFang SC","Microsoft YaHei",sans-serif;}
+.lf-surface svg .display{font-family:OPCDisplay,"PingFang SC",sans-serif;}
+.lf-surface svg .number{font-family:OPCNumber,OPCMono,sans-serif;font-variant-numeric:tabular-nums;}
+.lf-surface svg .mono{font-family:OPCMono,OPCSans,monospace;font-variant-numeric:tabular-nums;}

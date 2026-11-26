@@ -1,0 +1,38 @@
+/* Scale type with the 3840 × 2160 design canvas. The footage keeps its original colours. */
+.uhd-stage { position:relative; isolation:isolate; container-type:inline-size; width:100%; aspect-ratio:16/9; overflow:hidden; }
+.uhd-layer { position:absolute; inset:0; pointer-events:none; color:var(--u-ink); --u-rgb:9,16,27; --u-ink:#F3F5FF; --u-muted:#CFD9E5; --u-accent:#78E1DF; --u-key:#FFC795; --u-face:.93; --u-veil:.91; --u-brand-tone:.80; --u-edge:rgba(239,245,255,.20); font-family:OPCSans,"PingFang SC","Microsoft YaHei",sans-serif; }
+.uhd-layer[data-tone=light] { --u-rgb:247,250,251; --u-ink:#152238; --u-muted:#354861; --u-accent:#006C7E; --u-key:#6250B5; --u-edge:rgba(21,34,56,.14); --u-brand-tone:.65; }
+.uhd-layer[data-solid=true]{--u-face:1;--u-veil:.99;--u-brand-tone:.98;}
+.uhd-layer *, .uhd-layer *::after,.uhd-layer *::before{box-sizing:border-box;}
+.uhd-layer :where(p,h2,figure){margin:0;}
+.uhd-brand-veil { position:absolute;inset:0 auto auto 0;width:46%;height:36%;background:linear-gradient(180deg,rgba(var(--u-rgb),var(--u-brand-tone)) 0% 40%,transparent 100%);mask-image:linear-gradient(90deg,#000 0 44%,transparent 100%);}
+.uhd-brand {position:absolute;left:6.25%;top:9.26%;width:13.7%;height:auto;display:block;background:transparent;border:0;padding:0;}
+.uhd-wash {position:absolute;inset:0;pointer-events:none;}
+.uhd-layer[data-side=left] .uhd-wash {background:radial-gradient(ellipse 73% 63% at 8% 93%,rgba(var(--u-rgb),var(--u-veil)) 0 42%,rgba(var(--u-rgb),.63) 60%,transparent 100%);}
+.uhd-layer[data-side=right] .uhd-wash {background:radial-gradient(ellipse 73% 63% at 92% 93%,rgba(var(--u-rgb),var(--u-veil)) 0 42%,rgba(var(--u-rgb),.63) 60%,transparent 100%);}
+.uhd-title,.uhd-metric {position:absolute;bottom:9.26%;left:6.25%;max-width:50%;text-align:left;}
+.uhd-layer[data-side=right] :is(.uhd-title,.uhd-metric){left:auto;right:6.25%;}
+.u-kicker {display:flex;align-items:center;gap:.65cqw;font-size:1.3cqw;line-height:1.5;font-weight:550;letter-spacing:.05em;color:var(--u-ink);}
+.u-kicker::before {content:"";display:block;flex:none;width:1.8cqw;height:.16cqw;border-radius:999px;background:var(--u-accent);}
+.uhd-title h2 {font:400 4.5cqw/1.12 OPCDisplay,OPCSans,sans-serif;letter-spacing:.015em;margin:.6cqw 0 .7cqw;color:var(--u-ink);}
+.uhd-title .u-sub {font-size:1.75cqw;line-height:1.4;color:var(--u-muted);}
+.uhd-metric,.uhd-pin-label,.uhd-caption {background:rgba(var(--u-rgb),var(--u-face));border-radius:1.05cqw;box-shadow:0 .28cqw 1.4cqw -.55cqw #08102155;}
+.uhd-metric {padding:1.15cqw 1.55cqw 1.25cqw; min-width:26.5%;max-width:43%;}
+.uhd-metric-head {display:flex;align-items:baseline;justify-content:space-between;gap:1.3cqw;}
+.uhd-metric-head strong {font:500 1.75cqw/1.35 OPCSans,sans-serif;}
+.uhd-metric-head span {font:400 1.25cqw/1.4 OPCSans,sans-serif;color:var(--u-muted);}
+.uhd-metric-reading {font:500 3.9cqw/1.12 OPCNumber,OPCSans,sans-serif;color:var(--u-accent);letter-spacing:-.045em;margin:.55cqw 0 .35cqw;}
+.uhd-metric-reading small {font-size:.52em;margin-left:.06em;}
+.uhd-metric-note,.uhd-pin-label p {font-size:1.38cqw;line-height:1.5;color:var(--u-muted);}
+.u-meter {margin-top:.8cqw;height:.32cqw;border-radius:999px;overflow:hidden;background:var(--u-edge);}
+.u-meter i{display:block;height:100%;border-radius:inherit;background:var(--u-accent);}
+.u-leader {position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+.uhd-pin-label {position:absolute;width:26%;padding:.88cqw 1.12cqw 1cqw;}
+.uhd-pin-label h2 {font:400 2.15cqw/1.2 OPCDisplay,OPCSans,sans-serif;color:var(--u-ink);margin:.28cqw 0 .3cqw;}
+.uhd-pin-label small {font:500 1.2cqw/1.3 OPCSans,sans-serif;color:var(--u-accent);}
+.uhd-caption {position:absolute;left:50%;bottom:9.26%;transform:translateX(-50%);max-width:82%;width:max-content;padding:.78cqw 1.4cqw 1cqw;}
+.uhd-caption .u-kicker{font-size:1.2cqw;margin:0 0 .3cqw;}
+.uhd-caption p:last-child{font:500 2cqw/1.45 OPCSans,sans-serif;white-space:pre-line;overflow-wrap:anywhere;}
+.uhd-layer .arrive {animation:uhd-rise .41s cubic-bezier(.22,1,.36,1) both;}
+@keyframes uhd-rise {from{opacity:0;translate:0 .45cqw;}to{opacity:1;translate:0 0;}}
+@media(prefers-reduced-motion:reduce){.uhd-layer .arrive{animation:none!important;}}

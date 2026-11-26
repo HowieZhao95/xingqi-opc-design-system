@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-CN" class="opc" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>星启 OPC · 三端视觉规范 V3.0</title><style>@@TOKENS@@
+@@KIT_CSS@@
+@@VISUAL_CSS@@
+body{margin:0}.bar,.page{width:min(1180px,calc(100% - 42px));margin:auto}.bar{min-height:68px;display:flex;align-items:center;gap:18px}.bar>a:first-child{margin-right:auto}.bar .opc-brand{width:138px}.bar button,.bar>a{font-size:14px}.page{display:grid;grid-template-columns:170px minmax(0,1fr);gap:54px;padding:40px 0 85px}.side{position:sticky;top:20px;align-self:start;display:grid;gap:8px}.side a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:99px;font-size:14px}.side a:hover{color:var(--cyan);background:var(--surface)}.guide-intro{margin-bottom:35px}.guide-intro small{color:var(--cyan);font:13px OPCMono,OPCSans,monospace}.guide-intro h1{font:400 clamp(45px,6vw,80px)/1.12 OPCDisplay,OPCSans,sans-serif;margin:16px 0}.guide-intro p{max-width:40em;font-size:17px;color:var(--muted)}article section{margin:0 0 42px;scroll-margin-top:12px}article h2{font:400 clamp(27px,3vw,40px)/1.25 OPCDisplay,OPCSans,sans-serif;margin:0 0 14px}article h3{font-size:19px;margin:20px 0 8px}article p,article li{font-size:16px;line-height:1.83}article p{margin:.6em 0}article ul,article ol{padding-left:1.4em}.tbl{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;vertical-align:top;padding:10px 9px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:500}code,kbd{font: .9em OPCMono,OPCSans,monospace}kbd{padding:.13em .5em;border:1px solid var(--line);border-radius:100px}.paired{display:grid;grid-template-columns:1fr 1fr;gap:12px}.logo-demo{padding:22px;border-radius:18px;display:grid;gap:8px}.logo-demo img{width:180px;max-width:100%;background:transparent;padding:0;border:0}.logo-demo small{font-size:12px}.night{color:#F3F5FF;background:#0B101A}.day{color:#152238;background:#F6F8FC}.dots{display:inline-block;vertical-align:middle;width:1.05em;height:1.05em;border-radius:50%;margin-right:8px;box-shadow:inset 0 0 0 1px #7D839955}.example-line{display:flex;flex-wrap:wrap;gap:16px;font-size:14px}.guide-tip{background:var(--surface);border-radius:18px;padding:16px 19px}.hand-off{margin:12px 0;white-space:pre-wrap;background:var(--inset);padding:16px;border-radius:14px;font:14px/1.8 OPCSans,sans-serif;color:var(--ink)}#status{font-size:13px;color:var(--cyan)}@media(max-width:760px){.bar,.page{width:calc(100% - 32px)}.bar{gap:8px;flex-wrap:wrap}.bar .opc-brand{width:100px}.bar .opc-button{font-size:12px;padding:8px 10px}.page{display:block;padding:20px 0}.side{position:static;display:flex;gap:5px;overflow:auto;margin-bottom:24px}.side a{white-space:nowrap;font-size:12px}.paired{gap:7px}.logo-demo{padding:14px}article section{margin-bottom:30px}th,td{padding:8px 5px}article p,article li{font-size:15px}}@media print{.bar,.side,button,.example-line{display:none}.page{display:block;width:100%;padding:0}.guide-intro{margin-top:0}article section{break-inside:auto;}tr,.guide-tip{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+article section{scroll-margin-top:24px}article h2{letter-spacing:.012em}.side [aria-current=location]{color:var(--cyan);background:color-mix(in srgb,var(--cyan) 9%,transparent)}
+.type-lab{isolation:isolate;position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:clamp(20px,4vw,48px) 6.25%;margin:14px 0 10px;border-radius:24px;background:var(--surface);overflow:hidden}
+.type-lab-main,.type-lab-data{display:grid;gap:6px}.type-lab-main>b{font:400 clamp(26px,4.3vw,64px)/1.18 OPCDisplay,OPCSans,sans-serif}
+.type-lab small,.type-lab span{color:var(--muted);font:13px/1.55 OPCSans,sans-serif}.type-lab-data strong{font:400 clamp(32px,6vw,76px)/1 OPCNumber,sans-serif;letter-spacing:-.065em;color:var(--cyan)}.type-lab-data strong small{font:inherit;font-size:.48em;color:inherit}
+.lab-grid:not([hidden]){position:absolute;inset:0 6.25%;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1.43%;pointer-events:none}.lab-grid i{border-radius:5px;background:color-mix(in srgb,var(--violet) 12%,transparent)}
+#type-grid{margin-bottom:14px;font-size:13px}.guide-intro h1{margin-top:8px}.guide-intro p,article>section>p{max-width:46em}
+@media(max-width:600px){.type-lab-main>span{max-width:12em}.type-lab{border-radius:16px}.type-lab small,.type-lab span{font-size:11px}}
+.guide-intro{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(168px,.63fr);gap:28px;align-items:center;padding:0 0 23px;border-bottom:1px solid var(--line)}.guide-intro h1{font-size:clamp(43px,5.9vw,82px);margin:0 0 .25em}.guide-proof{margin:0;text-align:center;color:var(--muted)}.guide-proof svg{width:100%;height:100%;max-height:185px}.guide-proof figcaption{font:11px OPCMono,OPCSans,sans-serif}.type-lab{margin-top:16px}
+@media(max-width:620px){.guide-intro{grid-template-columns:minmax(0,1fr) 90px;gap:12px}.guide-intro h1{font-size:clamp(28px,7vw,42px)}.guide-intro p{font-size:13px}.guide-proof figcaption{font-size:9px}.guide-proof svg{max-height:105px}}
+</style></head><body>
+<header class="bar"><a href="index.html" aria-label="回到视觉规范库" id="logo"></a><a href="index.html#group/web">进入组件库</a><button class="opc-button secondary" id="theme">切换亮色</button></header>
+<main class="page"><nav class="side" aria-label="规范目录"><a href="#brand">品牌与颜色</a><a href="#type">字体与网格</a><a href="#web">网页与层级</a><a href="#slides">HTML 汇报</a><a href="#motion">基础 MG</a><a href="#hud-mg">光学 HUD 动效</a><a href="#uhd">UHD 实景</a><a href="#handoff">取用与验收</a></nav>
+<article><header class="guide-intro"><div><h1>三端视觉规范</h1><p>网页、汇报和基础 MG 共用两张海报印样。展厅与 UHD 动效共用另一组视觉语言，用扫描截面、空间探针和曲线读出一件物体。</p></div><figure class="guide-proof"><div id="proof-art"></div><figcaption>A 环纹 · B 波纹</figcaption></figure></header>
+<section id="brand"><h2>品牌与颜色</h2><p>采用 2026 年 10 月 18 日确认的 C2 精工折线字标，包含八芒星与双线斜环。图片按原比例放置，透明底、零内边距。暗底用反白，亮底用暗色。Logo 独立于章节贴片和数据板，动画只做整体淡入。</p>
+<div class="paired"><div class="logo-demo night"><img id="logo-dark" alt="星启 OPC 反白字标"><small>暗底 / 反白</small></div><div class="logo-demo day"><img id="logo-light" alt="星启 OPC 暗色字标"><small>白底 / 暗色</small></div></div>
+<h3>成对资料怎样区分</h3><p>两张海报一旦确定身份，换载体时仍使用相同的图案与名字。A 用环纹，B 用波纹，人数始终跟随对应的海报。结论用整块青色读数，材料用薄荷与丁香紫区分；坐标轴和比较条保持水平。</p>
+<h3>色彩角色</h3><div class="tbl"><table><thead><tr><th>用途</th><th>深色主题</th><th>亮色主题</th><th>用在哪</th></tr></thead><tbody id="palette"></tbody></table></div>
+<p>丁香紫 #B7A4FA、薄荷 #78E1DF、杏色 #FFC795 用于少量纸页、章节符号和步骤节点，前景分别用 #292043、#123E46、#513114。颜色与标签、编号一起表达含义。品牌图形保持定稿形状。</p>
+</section>
+<section id="type"><h2>字体、曲线与网格</h2>
+<div class="type-lab"><div class="type-lab-main"><small>标题字样</small><b>从原话到简报</b><span>正文保留出处，先读判断，再查依据。</span></div><div class="type-lab-data"><strong>20<small>%</small></strong><span>8 / 40 位访客</span></div><div class="lab-grid" aria-hidden="true" hidden></div></div>
+<button class="opc-button secondary" id="type-grid" aria-pressed="false">显示 12 栏网格</button>
+
+<div class="tbl"><table><thead><tr><th>角色</th><th>字体</th><th>网页 / CSS px</th><th>汇报 / 1920px 参考</th><th>视频 / 1080p 横版</th></tr></thead><tbody>
+<tr><td>主题标题</td><td>站酷庆科黄油体</td><td>42–96</td><td>120–150</td><td>90–112</td></tr>
+<tr><td>内容标题</td><td>黄油体 / Noto Sans SC</td><td>24–48</td><td>72–80</td><td>64–80</td></tr>
+<tr><td>正文</td><td>Noto Sans SC</td><td>15–19</td><td>32–42</td><td>40–54</td></tr>
+<tr><td>数字</td><td>Unbounded</td><td>32–78</td><td>88–168</td><td>70–104</td></tr>
+<tr><td>编号、出处</td><td>Space Mono＋中文正文体</td><td>12–14</td><td>24–30</td><td>28–38</td></tr></tbody></table></div>
+<p>字体已随 HTML 离线内嵌。生僻字回退到设备中文字体。以 8px 为基础安排间距，相关内容靠拢，不同段落拉开。宽屏演示的左右边距为 120px，上下边距为 100px，12 栏、24px 栏距，单栏宽 118px。</p>
+<p class="guide-tip"><strong>边界全部圆润。</strong> 网页操作用胶囊或 12–16px 圆角，分组面板用 18–28px，横条两端裁成胶囊。海报用圆润纸页、斜切色带与细弧线形成空间。数据列与文字基线保持水平，表格按行分隔。</p></section>
+<section id="web"><h2>HTML 展示与交互</h2><p>桌面将提问和证据并置。窄屏先显示结论，再显示图表与原始人数。740px 以下手册单列排布。主要操作使用实心青与短下沿，同一组操作只有一个主按钮。</p>
+<h3>五种用途，最多三层</h3><div class="tbl"><table><thead><tr><th>表面</th><th>深色</th><th>亮色</th><th>规则</th></tr></thead><tbody id="surfaces"></tbody></table></div>
+<p>页面或弹窗各自作为第一层，内容面板为第二层，内嵌区为第三层。浮层与面板并列。弹窗本体采用不透明实色，遮罩为深色 rgba(2,5,12,.72) 或亮色 rgba(21,34,56,.28)。白色浮层以圆润边界和短阴影区分。</p>
+<p>悬停上移约 2px，按下回落 1–2px，过渡约 180ms。焦点用青色轮廓，选中还要改变文字、编号或状态。校验信息靠近字段，<kbd>Esc</kbd> 关闭弹窗并归还焦点。系统开启“减少动态效果”时，网页和汇报直接呈现稳定画面。</p>
+<button class="opc-button secondary" id="show-layers">打开层级示例</button><p class="example-line"><a href="index.html#group/web">打开十种网页组件</a><a href="web-starter.html">查看响应式实例</a></p></section>
+<section id="slides"><h2>汇报演示</h2><p>全套汇报使用 HTML 的 16:9 画布，按窗口等比缩放。把一句判断放在标题，让原始数据、出处或流程承担解释。正文样张含可编辑内容参数。</p>
+<div class="tbl"><table><thead><tr><th>所需版式</th><th>安排</th><th>适合回答</th></tr></thead><tbody>
+<tr><td>封面 / 章节</td><td>两行短标题，右侧一组错位纸页；章节只留一个问题</td><td>这次汇报要解决什么？</td></tr>
+<tr><td>摘要 / 比较</td><td>左侧关键数字，右侧并列依据或同尺度条形</td><td>哪组表现更好？分母是什么？</td></tr>
+<tr><td>流程 / 架构</td><td>步骤横排，支撑层竖排；箭头就近标注</td><td>先做什么？哪一层支撑上一层？</td></tr>
+<tr><td>证据 / 原始数据</td><td>原文与出处相邻，表格注明单位；可按讲述顺序揭示结论</td><td>判断出自哪项材料？</td></tr>
+<tr><td>行动与交接</td><td>一个动作加范围、记录方法和交付物</td><td>接下来如何验证？</td></tr>
+</tbody></table></div>
+<p>打开“版式目录”可按实际缩略图选页。用左右键或触屏滑动翻页，按 Home / End 到首尾。通过“编辑与取用”修改 JSON，选“下载本页 HTML”或“下载整份 HTML”保存。网格只在校样时打开。打印使用当前页。</p>
+<p class="example-line"><a href="slides-dark.html">深色演示</a><a href="slides-light.html">亮色演示</a></p></section>
+<section id="motion"><h2>MG 动态图形</h2><p>让动势解释对象之间的关系。片头的两张圆角纸页从错位位置轻旋入画，步骤编号错峰抬起，两条数据从同一零点同步生长。图表停稳后才出现结论字幕。</p>
+<div class="tbl"><table><thead><tr><th>组件</th><th>帧 / 30 fps</th><th>画面与可替换参数</th></tr></thead><tbody>
+<tr><td>片头 TitleIn</td><td>0–83</td><td>替换主题和强调行。薄荷 A 使用环纹，丁香紫 B 使用波纹。纸页轻旋入位，文字保持水平。</td></tr>
+<tr><td>步骤 StepIn</td><td>84–173</td><td>步骤错开 4 帧，允许图标短小回弹。替换步骤名与说明。</td></tr>
+<tr><td>比较 CompareBars</td><td>174–293</td><td>输入两组访客和下单人数，固定 0–100% 刻度，终值静止供核对。</td></tr>
+<tr><td>结论字幕 LowerThird</td><td>294–371</td><td>单句优先，最多两行。支持导出透明背景的独立 HTML 覆盖层。</td></tr>
+<tr><td>收尾 LogoOut</td><td>372–449</td><td>定稿字标整体显现，保持原比例与透明背景。</td></tr></tbody></table></div>
+<p>全片 15 秒，共 450 帧。通常 12 帧入场、4 帧错峰、8 帧离场。用圆滑减速曲线收住位置，正文和真实数据保持稳定。时间线按五段的实际帧长排布，可以点击段落跳到对应镜头的可读帧。单组件模式使用该镜头自己的时间标尺。</p>
+<p>横版画布 1920 × 1080，安全区沿用汇报画布。竖版 1080 × 1920，示例正文落在 x=88–930、y=180–1630，将副信息和数字移到上下次序，为底部平台控件留位。动效工作台可以切主题、切画幅、改参数并下载一个独立镜头 HTML。</p>
+<p class="example-line"><a href="motion-dark.html">深色动效</a><a href="motion-light.html?format=portrait">亮色竖版</a></p></section>
+<section id="hud-mg"><h2>光学 HUD 动效</h2>
+<p>《浮光》的实景装置在 MG 里由一张可改轮廓的曲面代替。截面扫过曲面，刻度盘报出进度，光迹把视线带到采样点。细网线留在物体表面，读数与字幕使用局部圆角衬底。单件可透明叠在演讲、作品、网页或自己的实景上。</p>
+<p class="example-line"><a href="mg-hud.html">打开 20 秒组合工作台 ↗</a><a href="mg-hud.html?format=portrait">竖屏工作台 ↗</a><a href="mg-hud.html?ink=day">亮底深青样张 ↗</a></p>
+<h3>按剪辑用途取用</h3><div class="tbl"><table><thead><tr><th>组件</th><th>默认时长</th><th>可替换的内容</th></tr></thead><tbody>
+<tr><td><a href="hud-mg/title.html?edit=1">扫描片头</a></td><td>4 秒</td><td>通道名、主标题与副标题。扫线先显主字，再读副题。</td></tr>
+<tr><td><a href="hud-mg/surface.html?edit=1">曲面扫描</a></td><td>6 秒</td><td>3–24 组上下沿控制点和 8–96 个截面。底部的小曲线读出局部厚度。</td></tr>
+<tr><td><a href="hud-mg/dial.html?edit=1">刻度仪盘</a></td><td>5 秒</td><td>量程、单位、起止数值。外弧、指针和数字同时到位。</td></tr>
+<tr><td><a href="hud-mg/probe.html?edit=1">空间探针</a></td><td>5 秒</td><td>测点、名称、起止锚点和单位。组合内可追随光头或落在曲面坐标上。</td></tr>
+<tr><td><a href="hud-mg/trace.html?edit=1">光迹转场</a></td><td>4 秒</td><td>2–12 个路径点、起点与终点名称。组合中将路径投到同一张曲面上。</td></tr>
+<tr><td><a href="hud-mg/plot.html?edit=1">多通道曲线</a></td><td>6 秒</td><td>1–3 路数据，每路 2–60 个样本。统一设置量程、单位与采样时长。</td></tr>
+<tr><td><a href="hud-mg/band.html?edit=1">遥测字幕</a></td><td>6 秒</td><td>横屏并列读数与小趋势线，竖屏按行排列。组合从曲线继承采样。</td></tr>
+<tr><td><a href="hud-mg/seal.html?edit=1">品牌收束</a></td><td>4 秒</td><td>归档说明、结果和数量。合成时数量取自通道总数，透明定稿字标整体淡入。</td></tr>
+</tbody></table></div>
+<h3>画幅、用色与动势</h3><p>横屏为 3840 × 2160，标题、数据和字标与边缘保持左右 240px、上下 200px。竖屏为 2160 × 3840，测量仪与数据移到对象上方，字幕排在对象下方，底部约 600px 留给平台控件。曲线、截面和角部配准线均使用圆头。主扫描线在 4K 上约 4–8px，次要网线约 2–3px，发光集中在当前截面和光头。</p>
+<p>青辉 <code>#56F9DD</code> 与冰白 <code>#DEFFFF</code> 用于暗底，深青 <code>#006E80</code> 用于亮底。三路样本分别使用主色、紫色与杏色，并配名称或单位。数据弹层有局部衬底，页面、面板和内嵌区域合计最多三层。品牌字标使用 C2 定稿，透明零内边距，暗处反白、亮处用暗色。</p>
+<p>30 fps 单件默认入场 12 帧、退场 8 帧，运动在镜头约 77% 处抵达终点，留出停读。60 fps 将帧数加倍。20 秒组合依次在 0、3.6、7.6、11、16.4 秒转入开场、推进、定位、采样和收束。调整组合时长时，这五段随整片等比伸缩。舞台上照度是模拟样本，交付实测项目时换入同单位的真实采样，并在曲线参数中更新数据来源。</p>
+<h3>换素材与接入时间线</h3><p>可从组件工作台直接编辑并下载，也可以从分享包的 <code>hud-mg/</code> 取单个 HTML。每件默认全画幅透明；直接播放时按 <kbd>E</kbd> 或加 <code>?edit=1</code> 可回到编辑器，再下载保存。组合内每层都可改可见性、缩放和落位，探针或光迹的偏移以其附着点为基准。把曲线的量程、单位和样本换掉，组合内遥测和探针会同步，归档数量随通道数更新。</p>
+<p>嵌入时让 HTML 填满宿主画布。加 <code>?frame=90</code> 定格在第 90 帧，帧号从 0 起。用 <code>?autoplay=0</code> 暂停载入，<code>?loop=0</code> 只播放一次。同页可调用 <code>HudMG.seekFrame(n)</code>。父页面可用 <code>iframe.contentWindow.postMessage({type:"XQHUD:seek", frame:n}, "*")</code> 驱动透明层与底图同步。设置相同画幅、帧率和起始帧。</p></section>
+<section id="uhd"><h2>UHD 实景叠加</h2><p>3840 × 2160 横屏使用 240px 左右安全区、200px 上下安全区。字标跟随其所在局部的明暗选用定稿版本，保持透明无框。将标题、标注、读数或字幕作为本镜的主要信息，让人脸、手势和演示对象留在画面里。</p>
+<div class="tbl"><table><thead><tr><th>组件</th><th>落位与字号（4K 参考）</th><th>背景处理</th></tr></thead><tbody>
+<tr><td>开场标题</td><td>下角，主标题约 173px，副标题约 67px</td><td>只在文字所在边缘做柔和渐隐，可换左右侧</td></tr>
+<tr><td>位置标注</td><td>点落在实物，约 83px 标题留在旁侧</td><td>双色引线穿过杂纹，小圆角标签保护文字</td></tr>
+<tr><td>数据读数</td><td>下角，主数字约 150px，保留分子、分母</td><td>93% 局部实色面，复杂画面可切换实色</td></tr>
+<tr><td>讲解字幕</td><td>底部居中，约 77px，最多两行</td><td>按文字宽度承托，随镜头保持同一极性</td></tr></tbody></table></div>
+<p>用原片对照和最亮、最暗的测试帧检查可读性。现场距离、屏幕物理尺寸与环境光会影响字级，安装时以现场最远观看点复核。导出的透明 HTML 仅绘制叠加信息与所需衬底，可以用作导播浏览器源。</p>
+<h3>光场扫描 HUD</h3><p>《浮光》用贴合玻璃形状的曲面线网、移动扫描截面和 48 格仪表开场。结构镜头将截面示意连接到装置，光迹镜头沿鳍片描线并落到地面配准格。三个探针固定在场景坐标上，与曲线、底部读数共用 0–400 lx 的模拟数据。青辉与冰白投影均使用局部暗色衬底。可按同一帧号将透明 HUD 与运动底图合成。</p><p class="example-line"><a href="uhd-lightfield.html">播放光场扫描 HUD</a><a href="uhd-scene.html">看项目讲解样张</a><a href="uhd-scene.html?scene=studio&amp;mode=pin">看日光工作室标注</a></p></section>
+<section id="handoff"><h2>交接与验收</h2>
+<ol><li>打开任一入口，核对透明定稿字标在实际底色上的可见度。组件各边缘圆润，面板嵌套最多三层。</li><li>网页用手机宽度检查换行、按钮和键盘焦点。普通正文和大字分别以 4.5:1、3:1 为对比度目标。</li><li>汇报缩放至 480 × 270 检查标题、主数字和证据顺序。改数据后同步更新跨页结论与原始计数。</li><li>MG 的横竖版都要停在首帧、读数完成帧和片尾检查；拖回同一帧应得到相同画面。</li></ol>
+<h3>给下一位制作者</h3><p id="prompt" class="hand-off"></p><button id="copy" class="opc-button">复制续作提示</button> <span id="status" role="status"></span></section>
+</article></main>
+<dialog id="layer-sample" class="opc-modal" aria-labelledby="layer-title"><h3 id="layer-title">实色弹窗</h3><p>弹窗是第一层，面板是第二层，浅凹的输入区是第三层。</p><div style="border-radius:18px;background:var(--surface);padding:16px"><label for="layer-field">备注</label><input id="layer-field" style="display:block;width:100%;padding:10px 13px;border-radius:12px;border:1px solid var(--strong);background:var(--inset);color:var(--ink);margin-top:8px" placeholder="输入补充说明"></div><form method="dialog" style="margin-top:17px"><button autofocus class="opc-button">关闭示例</button></form></dialog>
+<script>window.OPC_INLINE=@@INLINE@@;</script><script>@@KIT_JS@@</script><script>
+const palette=@@TOKEN_JSON@@;const ref=k=>document.getElementById(k);let mode='dark';
+for(const [where,name,color,desc] of [
+ ['palette','画布','bg','页面与画布底层'],['palette','正文','ink','主标题与重要数字'],['palette','辅助文字','muted','口径与出处'],['palette','重点','cyan','标题关键词、关键读数和当前步骤'],['palette','支撑','violet','结构、依赖与纸面点缀'],['palette','结果','magenta','少量结果标记'],
+ ['surfaces','页面','bg','整体基底'],['surfaces','常规面板','surface','相关内容分组'],['surfaces','内嵌区','inset','输入和编辑区域'],['surfaces','浮层','raised','菜单与短反馈'],['surfaces','模态','modal','需要集中处理的内容']]){
+ const row=ref(where).insertRow();row.insertCell().textContent=name;for(const kind of ['dark','light']){const cell=row.insertCell(),dot=document.createElement('i'),c=palette.themes[kind][color];dot.className='dots';dot.style.background=c;cell.append(dot,c);}row.insertCell().textContent=desc;
+}
+ref('proof-art').append(OPCProofs.pair());ref('logo').append(OPC.create('brand'));ref('logo-light').src=OPC_INLINE.brand['xingqi-lockup-dark.svg'];ref('logo-dark').src=OPC_INLINE.brand['xingqi-lockup-white.svg'];
+function theme(next){mode=next;OPC.setTheme(document.documentElement,mode);
+document.querySelectorAll('a[href^="index.html"],a[href^="web-starter.html"]').forEach(a=>{const u=new URL(a.getAttribute('href'),document.baseURI);u.searchParams.set('theme',mode);a.setAttribute('href',u.pathname.split('/').pop()+u.search+u.hash);});
+ref('theme').textContent=mode==='dark'?'切换亮色':'切换深色';const c=palette.themes[mode];
+ref('prompt').textContent='用星启 OPC V3.0 的'+(mode==='dark'?'深':'亮')+'色主题制作【网页展示 / HTML 汇报演示 / HTML MG 动画】。画布底色 '+c.bg+'，文字 '+c.ink+'，主要强调 '+c.cyan+'。字标使用 C2 透明定稿，暗底反白、亮底暗色。容器用柔和圆角，数据条两端圆润，最多三层。海报 A 用薄荷环纹、B 用丁香紫波纹。基础动效用纸页轻旋和步骤错峰。制作 UHD 光学 HUD 时取用八件动效库，让曲面、探针、曲线和遥测由同一帧驱动，读数和数据来源可见。按附带的组件样例替换内容、数据和出处，交付可离线打开的 HTML。';}
+ref('show-layers').onclick=()=>ref('layer-sample').showModal();
+ref('type-grid').onclick=()=>{const mesh=document.querySelector('.lab-grid'),b=ref('type-grid');mesh.hidden=!mesh.hidden;b.textContent=mesh.hidden?'显示 12 栏网格':'收起网格';b.setAttribute('aria-pressed',String(!mesh.hidden));};
+for(let i=0;i<12;i++)document.querySelector('.lab-grid').append(document.createElement('i'));
+ref('theme').onclick=()=>theme(mode==='dark'?'light':'dark');
+ref('copy').onclick=async()=>{try{await navigator.clipboard.writeText(ref('prompt').textContent);ref('status').textContent='已复制';}catch{const r=document.createRange();r.selectNodeContents(ref('prompt'));const sel=getSelection();sel.removeAllRanges();sel.addRange(r);ref('status').textContent='已选中，请复制';}};
+const navLinks=[...document.querySelectorAll('.side a')];
+const observer=new IntersectionObserver(entries=>{for(const e of entries){if(e.isIntersecting){navLinks.forEach(l=>{if(l.hash==='#'+e.target.id)l.setAttribute('aria-current','location');else l.removeAttribute('aria-current');});}}},{rootMargin:'0px 0px -68% 0px'});
+document.querySelectorAll('article>section[id]').forEach(n=>observer.observe(n));
+theme(new URLSearchParams(location.search).get('theme')==='light'?'light':'dark');
+</script></body></html>

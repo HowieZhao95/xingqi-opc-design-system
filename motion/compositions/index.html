@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>星启 OPC · 动效画布</title>
+<style>*{box-sizing:border-box}html,body{margin:0}#stage{position:relative;width:1920px;height:1080px;overflow:hidden}svg{display:block}</style></head><body>
+<div id="stage" data-composition-id="opc-motion" data-start="0" data-duration="15" data-fps="30" data-width="1920" data-height="1080">
+<div class="clip" id="opc-motion-track" data-start="0" data-duration="15" data-track-index="0"></div></div>
+<script src="offline.js"></script><script src="../../source/proofs.js"></script><script src="composition.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+const params = new URLSearchParams(location.search);
+window.opc = OPCMotion.mount(document.querySelector('#stage'), {
+  theme: params.get('theme') || 'dark', format: params.get('format') || 'wide', component: params.get('component')
+});
+window.__timelines['opc-motion']=opc.timeline;
+opc.seekFrame(Number(params.get('frame') || 0));
+</script></body></html>

@@ -1,0 +1,41 @@
+<!doctype html><html lang="zh-CN" class="opc" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>星启 OPC · 海报投放网页样例</title><style>@@TOKENS@@
+@@KIT_CSS@@
+@@VISUAL_CSS@@
+body{margin:0}.wrap{width:min(1120px,calc(100% - 44px));margin:auto}.top{min-height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.top .opc-brand{width:144px}.hero{padding:clamp(38px,7vw,80px) 0;display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center}.hero .opc-headline em{display:block}.hero .opc-headline h3{font-size:clamp(52px,6vw,82px);line-height:1.05}.hero .opc-headline p{margin-top:18px;font-size:18px}.top-cta{display:flex;gap:8px}.plot{padding:clamp(18px,3vw,37px);border-radius:26px;background:var(--surface)}.summary{border-block:1px solid var(--line);display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(20px,4vw,50px);align-items:center;padding:32px 0}.hero .opc-headline h3{letter-spacing:.006em}.summary{position:relative}.study-metric{padding:12px 0}.plot .opc-meter{height:12px}.next{padding:45px 0}.next h2{font:400 39px/1.25 OPCDisplay,OPCSans,sans-serif;margin:0 0 23px}.end{padding:15px 0 24px;color:var(--muted);font-size:13px}.top-cta button{font-size:13px}.helper{padding:12px 0 34px;font-size:14px;color:var(--muted)}.helper details{border-top:1px solid var(--line);padding-top:14px}.helper p{margin:8px 0}.helper code{font-family:OPCMono,OPCSans,monospace}@media(max-width:720px){.hero,.summary{grid-template-columns:1fr}.wrap{width:calc(100% - 32px)}.top .opc-brand{width:110px}.top{gap:8px;flex-wrap:wrap}.top-cta{gap:4px}.top-cta button{font-size:12px;padding:6px 10px}.plot{padding:17px}.next{padding:30px 0}}
+ .starter-art{position:relative;justify-self:center;width:min(100%,440px);aspect-ratio:1.32;margin:0}.starter-art .opc-proof-pair{display:block;width:100%;height:100%}.hero{padding:clamp(25px,4vw,65px) 0;gap:clamp(16px,3vw,55px)}.hero:has(.starter-art[hidden]){display:block}
+.summary .plot{background:none;border:0;padding:10px 0}.report-table{padding:26px 0 0}.report-table caption{font:400 28px/1.35 OPCDisplay,OPCSans,sans-serif}.summary .opc-numeric{font-size:clamp(46px,6vw,88px)}.hero .opc-headline h3{font-size:clamp(48px,5.7vw,80px)}.hero .opc-headline{max-width:39em}
+@media(max-width:720px){.hero{position:relative;grid-template-columns:1fr clamp(88px,27vw,170px);gap:6px;align-items:center}.hero .opc-headline h3{font-size:clamp(30px,6.8vw,48px)}.hero .opc-headline p{font-size:14px;margin-top:10px}.starter-art{width:118%;aspect-ratio:.85}.report-table{padding-top:17px}}
+</style></head><body><main class="wrap">
+<header class="top"><span id="brand"></span><div class="top-cta"><button class="opc-button secondary" id="theme">切换亮色</button><span id="info"></span></div></header>
+<section class="hero"><div id="title"></div><figure class="starter-art" id="starter-art" aria-label="本周两组投放样本"></figure></section>
+<section class="summary"><div class="study-metric"><div id="metric"></div></div><div class="plot" id="chart"></div></section><section class="report-table" id="table"></section>
+<section class="next"><h2>下一轮如何复测？</h2><div id="steps"></div></section>
+<aside class="helper"><details><summary>复用这个网页</summary><p>另存本 HTML，编辑源码里的 <code>report-data</code> 即可替换素材名与原始人数。页面会重新计算比例和结论。每个区块都由同文件中的 <code>OPC.create()</code> 创建。</p></details></aside>
+<footer class="end">星启 OPC · V3.0 网页样例 / 教学数据</footer></main>
+<script id="report-data" type="application/json">{"campaign":"海报投放","period":"同一周，按人去重","rows":[{"label":"海报 A","orders":8,"visitors":40},{"label":"海报 B","orders":12,"visitors":120}]}</script>
+<script>window.OPC_INLINE=@@INLINE@@;</script>
+<script>@@KIT_JS@@</script><script>
+const data=JSON.parse(document.querySelector('#report-data').textContent);
+const rows=data.rows.map(r=>({...r,rate:r.visitors>0 && r.orders>=0 && r.orders<=r.visitors ? r.orders/r.visitors:null}));
+const valid=rows.filter(r=>r.rate!==null), highest=valid.length?Math.max(...valid.map(r=>r.rate)):null;
+const winners=valid.filter(r=>r.rate===highest), best=winners[0];
+const rankable=winners.length===1&&valid.length>1;
+const caption=rankable?'下单转化率更高。':(winners.length>1?'最高比例并列。':'本周样本概览。');
+const render=(id,kind,props)=>document.getElementById(id).append(OPC.create(kind,props));
+const percent=v=>v===null?'—':new Intl.NumberFormat('zh-CN',{maximumFractionDigits:1}).format(v*100)+'%';
+render('brand','brand');render('info','modal',{label:'统计口径',title:'什么算一次转化？',body:'各组按人去重。用下单人数除以访客人数，时间范围为'+data.period+'。'});
+render('title','headline',{context:data.campaign+' / 教学示例',title:rankable?best.label+' 的':'海报投放',accent:caption,body:valid.map(r=>r.label+' 有 '+r.visitors+' 位访客、'+r.orders+' 位下单者').join('；')+'。'});
+render('chart','comparison',{title:'本周投放对照',rows:rows.map(r=>({...r,highlight:r.rate===highest&&highest!==null})),note:data.period});
+if(rows.length===2){
+ const id=row=>row.label.replace(/^海报\s*/,'');
+ const art=document.getElementById('starter-art');
+ art.append(OPCProofs.pair(rows.map(r=>({id:id(r),buyers:r.orders,visitors:r.visitors}))));
+}else document.getElementById('starter-art').hidden=true;
+if(rows.length===2&&rows[0].rate!==null&&rows[1].rate>0){
+ render('metric','metric',{label:rows[0].label+' 相对 '+rows[1].label,value:new Intl.NumberFormat('zh-CN',{maximumFractionDigits:2}).format(rows[0].rate/rows[1].rate),unit:'倍',note:percent(rows[0].rate)+' ÷ '+percent(rows[1].rate)+' · 同周转化率之比'});
+}else render('metric','metric',{label:'最高下单转化率',value:best?percent(highest).slice(0,-1):'—',unit:best?'%':'',note:best?best.label+' · '+best.orders+' 位下单者 / '+best.visitors+' 位访客':'等待有效访客样本'});
+render('table','table',{caption:'原始人数',headers:['素材','访客','下单','转化率'],rows:rows.map(r=>[r.label,r.visitors,r.orders,percent(r.rate)])});
+render('steps','steps',{current:0,items:[{title:'约定口径',note:'固定渠道与观察时间。'},{title:'记录人数',note:'为每张海报保留原始计数。'},{title:'复核结论',note:'使用同一条百分比刻度。'}]});
+function theme(m){OPC.setTheme(document.documentElement,m);document.getElementById('theme').textContent=m==='dark'?'切换亮色':'切换深色';}
+document.getElementById('theme').onclick=()=>theme(document.documentElement.dataset.theme==='dark'?'light':'dark');theme(new URLSearchParams(window.OPC_PREVIEW_QUERY||location.search).get('theme')==='light'?'light':'dark');
+</script></body></html>

@@ -1,0 +1,16 @@
+{
+  "talk":{
+    "name":"项目讲解","tone":"dark","side":"left",
+    "title":{"tag":"创作现场","text":"项目原型讲解","sub":"方案演示与现场交流"},
+    "pin":{"tag":"展陈空间","text":"项目展板","sub":"方案结构与原型展示","x":0.625,"y":0.305},
+    "metric":{"text":"下单转化率","orders":8,"visitors":40},
+    "caption":{"text":"先看两张海报各有多少访客，\n再比较其中有多少人下单。"}
+  },
+  "studio":{
+    "name":"日光工作室","tone":"light","side":"left",
+    "title":{"tag":"空间导览","text":"开放工作区","sub":"从个人创作到小组讨论"},
+    "pin":{"tag":"空间位置","text":"共创桌组","sub":"作品讨论与协作的位置","x":0.54,"y":0.629},
+    "metric":{"text":"下单转化率","orders":8,"visitors":40},
+    "caption":{"text":"把访谈中的原话保留下来，\n再为每个判断附上出处。"}
+  }
+}

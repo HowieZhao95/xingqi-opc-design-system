@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN" class="opc" data-theme="@@MODE@@"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>星启 OPC · HTML 汇报模板</title><style>@@TOKENS@@
+@@KIT_CSS@@
+@@VISUAL_CSS@@
+@@DECK_CSS@@</style></head><body>
+<header class="deck-tools"><span data-brand></span><div><button id="theme"></button><button id="overview" aria-haspopup="dialog">版式目录</button><button id="edit" aria-haspopup="dialog">编辑与取用</button><button id="full">全屏演示</button></div></header>
+<main class="deck-seat"><section id="stage" class="deck-stage" aria-label="汇报画布"></section></main>
+<footer class="deck-foot"><button id="prev" aria-label="上一页">←</button><span id="position" role="status"></span><button id="next" aria-label="下一页">→</button><button id="grid" aria-pressed="false">网格</button><button id="reveal" aria-pressed="false" hidden>揭示结论</button></footer>
+<dialog id="directory" class="opc-modal"><h2>选择版式</h2><div id="choices"></div><form method="dialog"><button class="opc-button secondary">关闭</button></form></dialog>
+<dialog id="editor-dialog" class="opc-modal"><h2 id="edit-title">编辑本页</h2><p id="notes"></p><label for="deck-params">内容参数 · JSON</label><textarea id="deck-params" spellcheck="false"></textarea><div class="edit-tools"><button id="apply" class="opc-button">应用到画布</button><button id="export-one" class="opc-button secondary">下载本页 HTML</button><button id="export-deck" class="opc-button secondary">下载整份 HTML</button><form method="dialog"><button class="opc-button secondary">关闭</button></form></div><p id="edit-status" role="status"></p></dialog>
+<script type="application/json" id="slides-data">@@DATA@@</script>
+<script>window.OPC_INLINE=@@INLINE@@;</script>
+<script>@@KIT_JS@@</script>
+<script>@@DECK_JS@@</script></body></html>

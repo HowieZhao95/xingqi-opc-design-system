@@ -1,0 +1,32 @@
+<!doctype html><html lang="zh-CN" class="opc" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="星启 OPC 的 UHD 生成展厅动态导览。曲面扫描、截面重建和三通道照度曲线可离线播放、逐帧定位和导出。"><title>浮光 · 光场扫描 HUD</title>
+<style id="lf-stage-style">@@TOKENS@@
+@@LF_FRAME_CSS@@</style><style>@@LF_DESK_CSS@@</style></head><body>
+<header class="mast wrap"><a href="index.html" aria-label="星启 OPC 设计手册"><img id="mast-logo" alt="星启 OPC · AI+社群"></a><nav aria-label="相关样例"><a href="mg-hud.html">复用为 MG ↗</a><a href="uhd-scene.html">实景组件</a><a href="visual-guide.html#uhd">大屏规范 ↗</a></nav></header>
+<main class="wrap">
+ <div class="heading"><div class="heading-copy"><h1>浮光<span class="hud-mark">HUD</span></h1><p>沿玻璃鳍片扫描 48 个虚拟截面，追踪三个位置的模拟照度。</p></div><button class="pill solo-full" id="full" type="button">全屏上屏 <span aria-hidden="true">↗</span></button></div>
+ <div class="desk"><section class="monitor" aria-label="动态导览与时间线">
+   <div class="screen-seat" id="screen-seat"><div id="stage" class="lf-surface"></div></div>
+   <div class="transport"><button class="play" id="play" type="button" aria-pressed="false">播放</button><label class="sr" for="scrub">逐帧定位</label><input id="scrub" type="range" min="0" max="899" value="0" step="1"><output for="scrub" id="clock"></output></div>
+   <div class="transport-foot"><div class="frame-controls"><button id="prev-frame" type="button" aria-label="前一帧">−1 帧</button><button id="next-frame" type="button" aria-label="后一帧">+1 帧</button><span id="frame-count"></span></div><span>3840 × 2160 <i> / </i> 30 fps</span></div>
+ </section>
+ <aside class="rail" aria-label="分镜与导出">
+   <div class="rail-head"><h2>扫描序列</h2><span>30.0 s</span></div>
+   <div id="shots" role="group" aria-label="跳至镜头可读帧"></div>
+   <div class="view-controls"><button id="raw" type="button" aria-pressed="false">原图对照</button><button id="tone" type="button">冰白 HUD</button><button id="edit" type="button">编辑采样</button></div>
+   <details class="hud-channels"><summary>HUD 图层</summary><div>
+     <label><input type="checkbox" data-channel="surface" checked>曲面与光迹</label>
+     <label><input type="checkbox" data-channel="probes" checked>空间探针</label>
+     <label><input type="checkbox" data-channel="readout" checked>仪表与读数</label>
+   </div></details>
+   <div class="exports"><h2>取用动效</h2><div class="selects"><label>范围<select id="scope"><option value="all">完整导览</option><option value="shot">当前镜头</option></select></label><label>画面<select id="output-kind"><option value="scene">含生成场景</option><option value="alpha">透明叠加层</option><option value="plate">仅运动底图</option></select></label></div><button type="button" class="primary" id="export">导出动态 HTML <span aria-hidden="true">↓</span></button><p id="status" role="status"></p></div>
+ </aside></div>
+ <details class="notes"><summary>场景、数据与复用</summary><div class="note-cols"><section><h3>新生成的场景</h3><p>底图由内置 ImageGen 生成。原图 1672 × 941，在 3840 × 2160 画布上等比取景。曲面线网贴合图中的鳍片，扫描截面、光路与地面配准格由 HTML 逐帧合成。</p></section><section><h3>照度模拟</h3><p>青辉与冰白是两种投影笔色；光学读数使用局部深色透景底。顶端时间标尺、左侧截面仪与画面内探针都跟随同一帧。三个观察点共用 0–400 lx 轴。采样范围 0–6 秒，每秒一个示例值，两个样点之间线性插值。可在“编辑采样”中修改样本。</p></section><section><h3>作为浏览器源</h3><p>可在“HUD 图层”单独开关曲面、探针和仪表。导出的 HTML 保留当前图层、主题与数据。含景模式自带底图；透明层沿用同一取景运动，可与导出的同段底图运动对齐。将浏览器源画布设为 3840 × 2160。网址加 <code>?frame=60</code> 可定位到片段局部第 60 帧。空格播放或暂停，方向键逐帧移动。分层合成时，用同一主时钟调用两层的 <code>LightfieldPlayer.seekFrame(n)</code>。</p></section></div></details>
+</main>
+<dialog id="editor" aria-labelledby="editor-title"><form id="data-form"><h2 id="editor-title">编辑照度曲线</h2><p>每个位置填 7 个整数，依次对应 0 至 6 秒；量程 0–400 lx。</p><div id="inputs"></div><p id="error" role="alert"></p><div class="form-actions"><button type="button" id="reset">恢复示例</button><button type="button" id="cancel">取消</button><button type="submit" class="primary">应用读数</button></div></form></dialog>
+<button id="exit-full" type="button">退出演示 · Esc</button>
+<script type="application/json" id="lf-plan">@@LF_DATA@@</script>
+<script type="application/json" id="lf-plate">"@@LF_PLATE@@"</script>
+<script type="application/json" id="lf-logos">@@LF_LOGOS@@</script>
+<script id="lf-runtime">@@LF_RUNTIME@@</script>
+<script id="lf-transport">@@LF_TRANSPORT@@</script>
+<script>@@LF_DESK_JS@@</script></body></html>

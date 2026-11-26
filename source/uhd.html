@@ -1,0 +1,38 @@
+<!doctype html><html lang="zh-CN" class="opc" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>星启 OPC · UHD 实景组件</title>
+<style id="overlay-style">@@TOKENS@@
+@@UHD_OVERLAY_CSS@@</style><style>@@KIT_CSS@@
+@@UHD_STUDIO_CSS@@</style></head><body>
+<header class="mast shell"><a href="index.html" aria-label="星启 OPC 手册首页" id="home-brand"></a><nav class="related"><a href="uhd-lightfield.html">浮光扫描 HUD ↗</a><a class="back" href="index.html">设计手册</a></nav></header>
+<main class="shell"><div class="page-title"><div><h1>UHD 实景组件</h1><p>在真实的空间与人物画面上，预览大屏信息的落点。</p></div><div class="format">3840 × 2160 <span>16:9</span></div></div>
+<div class="desk"><section class="monitor" aria-label="实景画面预览">
+ <div id="player"><div class="uhd-stage" id="stage"><div class="footage" id="footage"></div><div id="layer"></div><div id="safe" hidden aria-hidden="true"></div></div></div>
+ <div class="screen-tools"><div><button id="original" type="button" aria-pressed="false">看原片</button><button type="button" id="safe-toggle" aria-pressed="false">安全区</button><button id="video-toggle" type="button" hidden>播放底图</button></div><button class="broadcast" id="full">全屏预览 ↗</button></div>
+ <div class="scene-meta"><span id="source-label"></span><span>上屏文字与数据为示例</span></div>
+</section>
+<aside class="controls" aria-label="组件配置">
+ <fieldset><legend>背景画面</legend><div id="scenes" class="seg"><button data-scene="talk">项目讲解</button><button data-scene="studio">日光工作室</button></div>
+ <label class="upload">使用本地照片或视频 <span aria-hidden="true">↗</span><input type="file" id="upload" accept="image/*,video/*"></label></fieldset>
+ <fieldset><legend>上屏组件</legend><div id="modules" class="module-grid">
+  <button data-mode="title"><span class="glyph g-title" aria-hidden="true">Tt</span>开场标题</button>
+  <button data-mode="pin"><span class="glyph g-pin" aria-hidden="true">◎</span>位置标注</button>
+  <button data-mode="metric"><span class="glyph g-metric" aria-hidden="true">%</span>数据读数</button>
+  <button data-mode="caption"><span class="glyph g-caption" aria-hidden="true">CC</span>讲解字幕</button>
+ </div></fieldset>
+ <fieldset><legend>局部衬底</legend><div class="seg"><button data-tone="dark">暗底白字</button><button data-tone="light">亮底深字</button></div>
+  <div class="check-row"><label><input type="checkbox" id="solid"> 加强遮挡</label><label><input type="checkbox" id="brand" checked> 显示字标</label></div></fieldset>
+ <div class="extra-config" id="side-tools"><span>落位</span><button id="side" type="button">移至右侧</button></div>
+ <div class="extra-config" id="pin-tools" hidden><span>标注点</span><button id="pin-move" type="button" aria-pressed="false">在画面定位</button></div>
+ <div class="actions"><button id="edit" type="button">编辑内容</button><button id="export" class="primary" type="button">导出透明叠加层 ↓</button></div><p role="status" id="status"></p>
+</aside></div>
+<details class="production"><summary>大屏制作参数与用法</summary><div class="rules">
+ <section><h2>把中央留给现场</h2><p>以 3840 × 2160 为母版，左右各留 240px，上下各留 200px。标题或数据靠一侧排布，优先避开人脸、双手和正在演示的物件。位置标注的点落在物体上，文字落在旁侧。</p></section>
+ <section><h2>隔开文字与背景纹理</h2><p>标题用约 173px 黄油体，副标题约 67px；字幕约 77px，最多两行。标题使用边缘渐隐，数据卡与字幕使用 93% 不透明的局部实色。画面切换频繁时选“加强遮挡”，卡片与字幕转为实色。</p></section>
+ <section><h2>透明层接入</h2><p>导出文件只含当前组件、其局部衬底与所选字标。作为网页或导播软件的浏览器源时，设为 3840 × 2160，叠在视频源上。也可在 HTML 的 <code>overlay-settings</code> 内修改文字、人数和相对坐标。</p></section>
+ <section><h2>现场校看</h2><p>先用“看原片”核对主体，再全屏检查最亮与纹理最密的一帧。按实际屏幕尺寸和最远观看位置核对小字。标注点采用固定画面坐标，换镜头时重新定位。</p></section>
+</div></details></main>
+<dialog id="editor" aria-labelledby="edit-title"><form id="form"><h2 id="edit-title">编辑上屏内容</h2><div id="fields"></div><span id="field-error" role="alert"></span><div class="actions"><button id="cancel" type="button">取消</button><button type="submit" class="primary">应用</button></div></form></dialog>
+<button type="button" id="leave" aria-label="退出全屏预览">退出预览 · Esc</button>
+<script id="source-images" type="application/json">@@UHD_IMAGES@@</script>
+<script id="brand-images" type="application/json">@@UHD_LOGOS@@</script>
+<script id="scene-templates" type="application/json">@@UHD_SCENES@@</script>
+<script id="overlay-runtime">@@UHD_OVERLAY_JS@@</script><script>@@UHD_STUDIO_JS@@</script></body></html>

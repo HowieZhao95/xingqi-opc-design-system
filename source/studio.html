@@ -1,0 +1,48 @@
+<!doctype html><html lang="zh-CN" class="opc" data-theme="@@MODE@@"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>星启 OPC · 跨媒介设计手册 V3.0</title>
+<style id="system-style">@@TOKENS@@
+@@KIT_CSS@@
+@@VISUAL_CSS@@</style><style>@@STUDIO_CSS@@</style></head><body>
+<a class="skip" href="#library">跳到组件库</a>
+<header class="top"><div class="shell nav"><a href="index.html" class="nav-brand" aria-label="星启 OPC 视觉规范库" data-logo></a><nav aria-label="手册导航"><a href="#foundation">视觉规范</a><a href="#library">组件库</a><a href="#files">制作文件</a></nav><button type="button" class="theme" id="theme" aria-label="切换深浅主题"></button></div></header>
+<main id="top">
+<section class="shell hero">
+  <div class="intro"><h1>跨媒介<br><em>设计手册</em></h1>
+    <p class="lead">对照网页、汇报与 MG 的呈现，取用可编辑的星启组件。</p>
+    <div class="intro-actions"><a class="opc-button" href="#library">取用组件 <span aria-hidden="true">↓</span></a><a class="text-link" href="index.html">打开视觉规范库 ↗</a></div>
+  </div>
+  <div class="viewer">
+    <div class="viewer-nav"><div class="seg" id="media-choices" role="group" aria-label="选择媒介"><button data-media="web" aria-pressed="true">网页</button><button data-media="ppt" aria-pressed="false">汇报演示</button><button data-media="mg" aria-pressed="false">MG 动画</button></div><span class="mini-tag" id="media-tag"></span></div>
+    <div class="specimen" id="specimen"></div>
+    <div class="viewer-foot"><span id="media-caption"></span><a id="media-link" class="text-link" href="web-starter.html">打开实例 ↗</a></div>
+  </div>
+</section>
+<section class="band" id="foundation"><div class="shell foundation">
+  <div class="foundation-title"><h2>视觉规范</h2><p>取用色值、字样与入场节奏。</p>
+    <div class="spec-nav" role="group" aria-label="选择规范样本"><button type="button" data-spec="color" aria-pressed="true">色彩</button><button type="button" data-spec="type" aria-pressed="false">字体</button><button type="button" data-spec="motion" aria-pressed="false">动势</button></div></div>
+  <div class="spec-sheet" id="spec-sheet" aria-label="当前规范样本"></div>
+</div></section>
+<section id="library" class="shell library">
+  <div class="section-title"><div><h2>可复用组件</h2><p>选择组件，调整内容后可取走独立 HTML。</p></div><a class="text-link" href="visual-guide.html#web">组件接入说明 ↗</a></div>
+  <div class="workbench"><div class="component-menu" id="components" role="group" aria-label="预览组件"></div>
+    <article class="work-area"><header><div><h3 id="component-name"></h3><p id="component-use"></p></div><code id="api-name"></code></header>
+      <div class="live" id="live"></div>
+      <div id="quick-compare" hidden></div><div class="tools"><button class="opc-button secondary" id="edit" aria-expanded="false" aria-controls="editor">编辑 JSON</button><button class="opc-button secondary" id="copy">复制调用代码</button><button class="opc-button" id="standalone">下载组件 HTML</button><span role="status" id="status"></span></div>
+      <div id="editor" hidden><label for="params">组件参数 · JSON</label><textarea id="params" spellcheck="false"></textarea><div class="tools"><button class="opc-button secondary" id="apply">应用参数</button><button class="plain" id="reset">恢复示例</button></div></div>
+      <div id="manual" hidden><label for="manual-text">选择并复制以下代码</label><textarea id="manual-text" readonly></textarea></div>
+    </article>
+  </div>
+</section>
+<section id="files" class="band resource-section"><div class="shell"><div class="section-title"><div><h2>制作文件</h2><p>选择起步页、整套演示、动效镜头或实景叠加层。</p></div><a class="text-link" href="visual-guide.html#handoff">使用指南 ↗</a></div>
+  <div class="resources">
+    <article><div class="file-name"><span class="medium-id mint" aria-hidden="true">&lt;/&gt;</span><h3>网页展示</h3></div><p>响应式起步页与十个可独立下载的组件。</p><div class="file-links"><a href="web-starter.html">打开起步页 ↗</a><a href="#library">取用组件 ↓</a></div></article>
+    <article><div class="file-name"><span class="medium-id lilac" aria-hidden="true">▱</span><h3>汇报演示</h3></div><p>九种版式，可编辑内容、全屏翻页和导出单页。</p><div class="file-links"><a href="slides-dark.html">深色演示 ↗</a><a href="slides-light.html">亮色演示 ↗</a></div></article>
+    <article><div class="file-name"><span class="medium-id peach" aria-hidden="true">▶</span><h3>MG 动效</h3></div><p>八件光学 HUD 动效，另附五种基础 MG 镜头。</p><div class="file-links"><a href="mg-hud.html">光学 HUD 组件库 ↗</a><a href="motion-dark.html">基础深色 ↗</a><a href="motion-light.html">基础亮色 ↗</a></div></article>
+    <article><div class="file-name"><span class="medium-id mint" aria-hidden="true">4K</span><h3>UHD 实景</h3></div><p>曲面扫描、光迹追踪和照度采样，支持导出透明 HUD。</p><div class="file-links"><a href="uhd-lightfield.html">浮光扫描 HUD ↗</a><a href="uhd-scene.html">场景样机 ↗</a><a href="visual-guide.html#uhd">上屏规范 ↗</a></div></article>
+  </div>
+</div></section>
+</main><footer class="shell end"><span data-logo></span><span>星启 OPC 跨媒介主题 · V3.0</span><a href="visual-guide.html#brand">品牌素材</a></footer>
+<script id="inline-assets">window.OPC_INLINE=@@INLINE@@;</script>
+<script id="kit-script">@@KIT_JS@@</script>
+<script>@@FILES_JS@@</script><script>const RECIPES=@@RECIPES@@;
+@@STUDIO_JS@@</script></body></html>

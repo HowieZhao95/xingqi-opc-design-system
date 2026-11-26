@@ -1,0 +1,40 @@
+<!doctype html><html lang="zh-CN" class="opc" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="星启 OPC 光学 HUD 动效组件库。可独立编辑、逐帧合成及导出的 UHD 原生矢量 MG。"><title>光学 HUD · MG 动效组件库</title>
+<style id="hud-type">@@TOKENS@@</style><style id="hud-styles">@@HUD_CSS@@</style></head><body>
+<header class="mast wrap"><span class="brand-host"><img id="brand-logo" alt="星启 OPC · AI+社群"></span><nav id="main-nav" aria-label="其它资源">@@HUD_NAV@@</nav></header>
+<main class="wrap">
+ <header class="heading"><div><h1>光学 HUD <em>动效库</em></h1><p>从曲面扫描到读数归档，取用一段镜头，或组合一场完整演示。</p></div><button id="fullscreen" type="button">全屏预览 ↗</button></header>
+ <div class="bench"><section class="monitor" aria-label="合成画布与时间线">
+   <div id="monitor-seat"><div class="screen" id="screen"><div id="canvas" class="hm-stage"></div></div></div>
+   <div class="controls"><button class="play" id="play" type="button" aria-pressed="false">播放</button><input id="scrub" type="range" min="0" max="599" value="0" step="1" aria-label="逐帧预览"><output for="scrub" id="time"></output></div>
+   <div class="marks" id="beat-nav" role="group" aria-label="定位到编排段落"></div>
+   <div class="control-foot"><div class="nudge"><button id="minus" type="button" aria-label="前一帧">−1 帧</button><button id="plus" type="button" aria-label="后一帧">+1 帧</button><span id="frame-label"></span></div><span id="canvas-label"></span></div>
+ </section>
+ <aside class="inspector" aria-label="当前动效设置">
+   <div class="asset-header"><p id="role"></p><h2 id="name"></h2><span id="use"></span></div>
+   <label class="select-component">取用镜头<select id="quick-kind"></select></label>
+   <div class="setting-grid"><label>投影用色<select id="ink"><option value="cyan">青辉 · 暗底</option><option value="ice">冰白 · 暗底</option><option value="day">深青 · 亮底</option></select></label>
+    <label>画幅<select id="format"><option value="wide">横版 16:9</option><option value="portrait">竖版 9:16</option></select></label>
+    <label>背景<select id="background"><option value="solid">含画布</option><option value="transparent">透明叠加</option></select></label>
+    <label>帧率<select id="fps"><option value="30">30 fps</option><option value="60">60 fps</option></select></label>
+   </div>
+   <div class="asset-actions"><button id="edit" type="button">编辑参数</button><button id="restore" type="button">恢复预设</button></div>
+   <button id="export" class="primary" type="button">下载当前动画 HTML ↓</button><p class="status" role="status" id="status"></p>
+ </aside></div>
+ <section class="library" id="library"><header><div><h2>镜头与组件</h2><p>点击样张独立预览。组合演示可一键调用整套编排。</p></div><button type="button" id="sequence">组合演示 ↗</button></header><div class="shelf" id="shelf"></div></section>
+ <section id="reuse"><details><summary>UHD 制作与嵌入</summary><div class="rules">
+  <article><h3>先定运动任务</h3><p>片头扫描建立对象，截面和进度盘同步；空间探针交代部位，光迹连接两端。曲线进入后留出读数时间，最后淡入完整品牌字标。</p></article>
+  <article><h3>让图形依附内容</h3><p>曲面使用归一化上下轮廓；探针与光迹使用 0–1 坐标。各组曲线共用单位和量程，底部字幕可独立覆盖实景。这里的照度数据为模拟值。</p></article>
+  <article><h3>按帧接入</h3><p>导出 HTML 后作为浏览器源载入。网址加 <code>?frame=30</code> 定格到局部帧，按 <kbd>E</kbd> 可在本机继续编辑。</p></article>
+ </div><div class="embed-help"><p>深色画面用青辉或冰白，亮色画面用深青。字标按底色使用透明定稿。3840 × 2160 横屏左右保留 240px、上下 200px。2160 × 3840 竖屏重新排列主体与字幕，留出底部约 600px 的平台区域。常规镜头在 30 fps 下用 12 帧入场、8 帧退出，单件的主体在时间轴约 77% 处到达终值，退出前可停读。60 fps 将帧数等比翻倍。</p><p><code>HudMG.seekFrame(n)</code> 按当前文件的本地帧定位。父页面也可向 iframe 发送 <code>{type:"XQHUD:seek",frame:n}</code> 同步时间。透明层导出为自包含 HTML，底图由宿主画面提供。多层合成时在一个位置使用完整品牌字标。</p></div></details></section>
+</main>
+<dialog id="editor" aria-labelledby="editor-title"><form id="form"><h2 id="editor-title"></h2><p id="hint"></p><div class="layer-controls" id="layer-controls" hidden><label>组合中的图层<select id="edit-kind"></select></label><label><input type="checkbox" id="layer-on" checked> 在组合中显示</label></div><div class="fields">
+ <label>时长（秒）<input id="seconds" type="number" min="2" max="60" step=".1" required></label>
+ <label class="pos">缩放（%）<input id="scale" type="number" min="25" max="160" step="1"></label>
+ <label class="pos">横移（画布 %）<input id="xoff" type="number" min="-90" max="90" step="1"></label>
+ <label class="pos">纵移（画布 %）<input id="yoff" type="number" min="-90" max="90" step="1"></label>
+ </div><div id="direct" class="direct"></div><details id="advanced"><summary>完整内容参数 · JSON</summary><label class="sr" for="json">内容参数</label><textarea id="json" spellcheck="false" rows="8" required></textarea></details>
+ <p role="alert" id="error"></p><div class="dialog-actions"><button type="button" id="cancel">取消</button><button class="primary" type="submit">应用并预览</button></div></form></dialog>
+<button id="exit-full" type="button">退出演示 · Esc</button><button id="embed-play" type="button" hidden>暂停动画</button>
+<script type="application/json" id="hud-catalog">@@HUD_CATALOG@@</script><script type="application/json" id="hud-default">@@HUD_DEFAULT@@</script><script type="application/json" id="hud-logos">@@HUD_LOGOS@@</script>
+<script id="hud-blocks">@@HUD_ENGINE@@</script><script>@@HUD_CLOCK@@</script><script>@@HUD_APP@@</script>
+</body></html>

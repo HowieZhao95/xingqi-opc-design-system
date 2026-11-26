@@ -1,0 +1,55 @@
+<!doctype html><html lang="zh-CN" class="opc" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="星启 OPC 视觉风格规范库。预览品牌、网页、汇报、MG 与 UHD 的真实样例，编辑参数，带走离线 HTML。"><title>星启 OPC · 视觉风格规范库</title>
+<style id="system-style">@@TOKENS@@
+@@KIT_CSS@@
+@@VISUAL_CSS@@</style><style id="foundation-style">@@FOUNDATION_CSS@@</style><style>@@LIBRARY_CSS@@</style></head><body>
+<a class="skip-main" href="#main-view">跳到内容</a>
+<div class="layout"><aside id="rail" class="rail"><div id="nav-content">
+ <a class="wordmark" href="#overview" aria-label="星启 OPC 规范库首页" data-logo></a>
+ <button class="search-launch" id="search-button"><span class="lens" aria-hidden="true"></span>搜索规范与样例<kbd>/</kbd></button>
+ <nav aria-label="规范库目录" class="sections"><a class="nav-top" data-route="overview" href="#overview"><i class="sign overview-sign" aria-hidden="true"></i>规范总览</a><a class="nav-top" data-route="saved" href="#saved"><i class="sign star-sign" aria-hidden="true">☆</i>常用收藏</a><div id="group-nav"></div></nav>
+ <div class="rail-foot"><a class="nav-top" data-route="files" href="#files"><i class="sign files-sign" aria-hidden="true"></i>制作文件</a><a class="nav-top" href="#manage" data-route="manage"><i class="sign mark-base" aria-hidden="true"></i>维护指南</a><span class="edition">星启 OPC <b>V@@VERSION@@</b></span></div>
+</div></aside>
+<div class="workspace"><header class="bar"><div class="way"><button id="open-menu" aria-label="打开目录" class="icon-btn" aria-haspopup="dialog">☰</button><span id="breadcrumbs">规范库 / 总览</span></div><div class="bar-actions"><button id="mobile-search" class="icon-btn" aria-label="搜索"><span class="lens"></span></button><button class="theme" id="theme" type="button"><i class="tone-icon" aria-hidden="true"></i><span></span></button></div></header>
+<main id="main-view" tabindex="-1">
+<section id="home-view">
+ <div class="cover"><div class="cover-copy"><p class="cover-kicker">星启 OPC <span></span> DESIGN SYSTEM</p><h1>视觉风格<br><em>规范库</em></h1><p class="cover-sub">网页、汇报、MG 与 UHD 的制作标准和可编辑样例。</p><a class="primary-btn" href="#foundation/brand">查看基础规范 <span aria-hidden="true">↗</span></a></div>
+ <a class="exhibit" href="#uhd/field-opening" aria-label="查看浮光展厅曲面扫描样例"><img src="@@COVER@@" alt="浮光展厅中沿透明玻璃鳍片贴合的青紫色光学扫描网"><span class="exhibit-foot"><span><i></i>浮光展厅 <b>曲面扫描</b></span><span aria-hidden="true">↗</span></span></a></div>
+ <section class="home-section"><header class="block-title"><h2>基础规范</h2><a href="#group/foundation">查看全部 <span>↗</span></a></header><div class="foundation-quick">
+ <a class="quick quick-logo" href="#foundation/brand"><div class="quick-art"><img id="quick-logo" alt="透明星启定稿字标"></div><div class="quick-label">品牌字标<span>↗</span></div></a>
+ <a class="quick quick-color" href="#foundation/color"><div class="quick-art" id="quick-palette" aria-hidden="true"></div><div class="quick-label">色彩角色<span>↗</span></div></a>
+ <a class="quick quick-type" href="#foundation/type"><div class="quick-art" aria-hidden="true"><strong>星</strong><span>Aa</span><b>36</b></div><div class="quick-label">字体与字阶<span>↗</span></div></a>
+ </div></section>
+ <section class="home-section"><header class="block-title"><h2>跨媒介样例</h2><span class="total" id="media-total"></span></header><div id="medium-list" class="directory-list"></div></section>
+</section>
+<section id="list-view" hidden><div class="page-intro"><h1 id="list-title"></h1><p id="list-description"></p></div><div class="directory-list" id="list-items"></div></section>
+<section id="manage-view" hidden><div class="page-intro"><h1>维护指南</h1><p>目录从制作源码生成。新增独立样例时，登记一个 HTML 和一条目录记录。</p></div>
+ <section class="maint-doc"><h2>改已有样例</h2><dl><div><dt>品牌与规范</dt><dd><code>tokens.json</code> 管理颜色、字体、网格和节奏。基础规范说明在 <code>library/catalog.json</code>。</dd></div><div><dt>网页与汇报</dt><dd><code>web/recipes.json</code> 管理网页组件参数，<code>source/slides.json</code> 管理汇报版式。</dd></div><div><dt>MG 与 UHD</dt><dd><code>motion/shot-plan.json</code> 管理基础镜头，<code>hud-mg/catalog.json</code> 管理光学组件。空间锚点和采样在 <code>source/uhd-scenes.json</code> 与 <code>source/lightfield-data.json</code>。</dd></div></dl>
+ <h2>登记一个独立 HTML</h2><p>把可离线打开的文件放在 <code>library/examples/</code>，将下列记录追加到 <code>library/catalog.json</code> 的 <code>additional</code> 数组。路径前半段对应左侧分类，条目 ID 会成为可分享的定位地址。</p>
+ <pre id="register-example">{
+  "id": "web/material-note",
+  "name": "材料说明",
+  "description": "列出一件作品的材料与出处。",
+  "page": "examples/material-note.html",
+  "tags": ["材料", "出处"]
+}</pre><button class="quiet-btn" id="copy-registration">复制登记示例</button>
+ <h2>校验与打包</h2><p>在 <code>OPCPPT V/v3-source/</code> 运行。第一条在临时目录校验条目、规范锚点和本地文件。第二条重建 HTML 和可分享的 ZIP。基础 MG 的分镜或绘制源码有改动时，先运行 <code>python3 motion/build-standalone.py</code>。</p>
+ <pre>python3 source/build.py --check
+python3 source/build.py ./publish --package ./星启OPC-全HTML.zip</pre><p id="manage-status" role="status"></p></section></section>
+<section id="story-view" hidden>
+ <div class="story-title"><div><h1 id="story-title"></h1><p id="story-description"></p></div><button class="quiet-btn fav" id="favorite" aria-pressed="false"></button></div>
+ <div class="story-tools"><div id="variant-controls"></div><span class="stage-meta" id="stage-meta"></span></div>
+ <div id="stage" class="stage" aria-label="实时样例"></div>
+ <div id="playbar" class="playbar" hidden><button id="play" class="quiet-btn" aria-pressed="false">播放</button><input type="range" id="seek" min="0" max="100" step="1" aria-label="定位到帧"><output id="timecode" for="seek"></output></div>
+ <div class="story-actions"><div class="left-actions"><button class="primary-btn" id="download">下载样例 HTML ↓</button><button class="quiet-btn" id="edit">编辑参数</button></div><button class="link-btn" id="share">复制条目链接 ↗</button></div>
+ <p class="feedback" id="story-status" role="status"></p>
+ <section class="spec-section"><div class="block-title"><h2>使用规范</h2><button class="link-btn" id="copy-rules">复制规范</button></div><ul id="story-rules"></ul><details class="props-ref" id="parameter-reference"><summary>查看预设参数</summary><pre id="ref-json"></pre><button class="quiet-btn" id="copy-params">复制参数</button></details><div class="story-ref"><a id="guide-link" href="visual-guide.html">查看完整规范 ↗</a><code id="source"></code></div></section>
+</section>
+</main></div></div>
+<dialog id="menu-dialog"><div class="drawer-top"><strong>浏览目录</strong><button class="quiet-btn" id="close-menu">关闭</button></div><div id="drawer-seat"></div></dialog>
+<dialog id="search-dialog" aria-labelledby="search-title"><div class="dialog-head"><h2 id="search-title">搜索规范库</h2><button class="quiet-btn" id="close-search">关闭</button></div><label class="search-input"><span class="lens" aria-hidden="true"></span><input id="search" type="search" autocomplete="off" placeholder="搜索颜色、字幕、HUD…" aria-label="搜索规范与样例" aria-controls="results"></label><p id="hits" role="status"></p><div id="results" class="search-results"></div></dialog>
+<dialog id="edit-dialog" aria-labelledby="edit-title"><div class="dialog-head"><h2 id="edit-title">编辑组件参数</h2><button class="quiet-btn" id="close-edit">关闭</button></div><label class="param-label" for="props">内容参数 · JSON</label><textarea id="props" rows="12" spellcheck="false"></textarea><p id="edit-status" role="alert"></p><div class="dialog-actions"><button class="quiet-btn" id="reset-props">恢复当前变体</button><button class="primary-btn" id="apply-props">应用到样例</button></div></dialog>
+<dialog id="copy-dialog" aria-labelledby="copy-title"><div class="dialog-head"><h2 id="copy-title">选择并复制</h2><button class="quiet-btn" id="close-copy">关闭</button></div><textarea id="copy-value" readonly rows="5"></textarea></dialog>
+<script id="inline-assets">window.OPC_INLINE=@@INLINE@@;</script><script id="kit-script">@@KIT_JS@@</script>
+<script id="file-script">@@FILES_JS@@</script><script id="foundation-script">@@FOUNDATION_JS@@</script>
+<script type="application/json" id="registry">@@REGISTRY@@</script><script type="application/json" id="design-tokens">@@TOKEN_JSON@@</script><script type="application/json" id="documents">@@DOCUMENTS@@</script>
+<script>@@LIBRARY_JS@@</script></body></html>

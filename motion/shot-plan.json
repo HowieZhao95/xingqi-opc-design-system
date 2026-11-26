@@ -1,0 +1,565 @@
+{
+  "category": "charts",
+  "duration_s": 15,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080,
+    "aspect": "16:9"
+  },
+  "style": "星启 OPC 科技编辑风。左侧字线、右侧两张错位的几何海报；同一条青色线依次变为步骤标记、比较条和字幕起点。",
+  "palette": [
+    "#0B101A",
+    "#F3F5FF",
+    "#49DCEB",
+    "#A7B1C2"
+  ],
+  "font": "OPCDisplay / OPCSans / OPCNumber / OPCMono",
+  "beats": [
+    0,
+    12,
+    84,
+    88,
+    92,
+    174,
+    186,
+    294,
+    306,
+    372,
+    384
+  ],
+  "export": "html",
+  "asset_needs": [],
+  "shot_brief": "教学示例从两张海报带来的订单进入，用同一把百分比刻度比较下单人数与访客人数的比值。字幕在读者看过两根条后出现，最后保留完整品牌字标。",
+  "total_frames": 450,
+  "frame_convention": "所有帧区间为左闭右开；第 0–449 帧输出，450 是终点。布局坐标以各画布左上角为原点。",
+  "audio": null,
+  "tokens": "../tokens.json",
+  "variants": {
+    "themes": [
+      "dark",
+      "light"
+    ],
+    "formats": [
+      {
+        "id": "wide",
+        "w": 1920,
+        "h": 1080,
+        "safe": [
+          120,
+          100,
+          1800,
+          980
+        ]
+      },
+      {
+        "id": "portrait",
+        "w": 1080,
+        "h": 1920,
+        "safe": [
+          88,
+          180,
+          930,
+          1630
+        ]
+      }
+    ],
+    "theme_source": "同名主题读取 tokens.json 的 themes，各层按语义着色；A 用 cyan，B 用 muted，两条轨道用 line。"
+  },
+  "local_assets": {
+    "logo": {
+      "dark": "../assets/brand/xingqi-lockup-white.svg",
+      "light": "../assets/brand/xingqi-lockup-dark.svg"
+    },
+    "fonts": {
+      "OPCDisplay": "../assets/fonts/OPCDisplay.woff2",
+      "OPCSans": "../assets/fonts/OPCSans.woff2",
+      "OPCNumber": "../assets/fonts/OPCNumber.woff2",
+      "OPCMono": "../assets/fonts/OPCMono.woff2"
+    }
+  },
+  "block": "data-chart",
+  "customize": {
+    "domain_pct": [
+      0,
+      100
+    ],
+    "ticks_pct": [
+      0,
+      10,
+      20,
+      30,
+      40,
+      50,
+      60,
+      70,
+      80,
+      90,
+      100
+    ],
+    "label_ticks_pct": [
+      0,
+      20,
+      40,
+      60,
+      80,
+      100
+    ],
+    "native_shapes": true,
+    "audio": false
+  },
+  "content": {
+    "block": "data-chart",
+    "customize": {
+      "domain_pct": [
+        0,
+        100
+      ],
+      "ticks_pct": [
+        0,
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90,
+        100
+      ],
+      "label_ticks_pct": [
+        0,
+        20,
+        40,
+        60,
+        80,
+        100
+      ],
+      "native_shapes": true,
+      "audio": false
+    },
+    "type": "bar",
+    "data": [
+      {
+        "id": "A",
+        "visitors": 40,
+        "buyers": 8
+      },
+      {
+        "id": "B",
+        "visitors": 120,
+        "buyers": 12
+      }
+    ],
+    "labels": [
+      "海报 A",
+      "海报 B"
+    ],
+    "headline": "哪张海报的下单转化率更高？",
+    "axes": true,
+    "formula": "rate = buyers / visitors；填充宽度 = trackWidth × rate；显示百分数 = rate × 100%",
+    "sample_label": "教学示例",
+    "disclosure": "沿用 V2 §6.5 的同周教学示例，每张海报的访客按人去重，每位下单者只下一单。",
+    "scenes": [
+      {
+        "id": "title",
+        "start": 0,
+        "end": 2.8,
+        "frames": [
+          0,
+          84
+        ],
+        "text": "哪张海报的\n下单转化率更高？",
+        "emphasis_words": [
+          "转化率"
+        ],
+        "emotion": "提问",
+        "motion": "左下部两行标题上移 24 px，末行关键词变青。",
+        "beats": [
+          0,
+          12,
+          76
+        ],
+        "cues": [
+          {
+            "from": 0,
+            "to": 12,
+            "action": "标题与副图出现"
+          },
+          {
+            "from": 12,
+            "to": 76,
+            "action": "两行标题完整停留"
+          },
+          {
+            "from": 76,
+            "to": 84,
+            "action": "标题淡出"
+          }
+        ],
+        "component": {
+          "name": "TitleIn",
+          "block": "caption-editorial-emphasis",
+          "props": {
+            "text": [
+              "哪张海报的",
+              "下单转化率更高？"
+            ],
+            "accent": "转化率",
+            "eyebrow": "教学示例",
+            "motif": "仅以轮廓和短线绘出前后错位的 A、B 两张海报，保持文字水平。"
+          }
+        }
+      },
+      {
+        "id": "steps",
+        "start": 2.8,
+        "end": 5.8,
+        "frames": [
+          84,
+          174
+        ],
+        "text": "先算每张海报的转化率",
+        "emphasis_words": [
+          "转化率"
+        ],
+        "emotion": "讲解",
+        "motion": "三个动作沿同一基线从左到右依次出现，最后一项用青色编号。",
+        "beats": [
+          84,
+          88,
+          92,
+          104,
+          166
+        ],
+        "cues": [
+          {
+            "from": 84,
+            "to": 96,
+            "action": "第 1 项进入"
+          },
+          {
+            "from": 88,
+            "to": 100,
+            "action": "第 2 项进入"
+          },
+          {
+            "from": 92,
+            "to": 104,
+            "action": "第 3 项进入"
+          },
+          {
+            "from": 104,
+            "to": 166,
+            "action": "三个动作完整停留"
+          },
+          {
+            "from": 166,
+            "to": 174,
+            "action": "淡出"
+          }
+        ],
+        "component": {
+          "name": "StepIn",
+          "block": "caption-clip-wipe",
+          "props": {
+            "title": "怎么算下单转化率？",
+            "items": [
+              "数下单人数",
+              "数访客人数",
+              "前者除以后者"
+            ],
+            "active": 2
+          }
+        }
+      },
+      {
+        "id": "chart",
+        "start": 5.8,
+        "end": 9.8,
+        "frames": [
+          174,
+          294
+        ],
+        "text": "两张海报，同一把尺",
+        "emphasis_words": [
+          "20%"
+        ],
+        "emotion": "比较",
+        "motion": "两个条形从同一零点同时增长；人数和最终百分比始终水平。",
+        "beats": [
+          174,
+          186
+        ],
+        "cues": [
+          {
+            "from": 174,
+            "to": 186,
+            "action": "两条填充同时伸展，数据同步出现"
+          },
+          {
+            "from": 186,
+            "to": 294,
+            "action": "数据静止，可对照原始人数与读数"
+          }
+        ],
+        "component": {
+          "name": "CompareBars",
+          "block": "data-chart",
+          "props": {
+            "data": "content.data",
+            "domain": [
+              0,
+              100
+            ],
+            "format": "{buyers} 人下单 ÷ {visitors} 位访客",
+            "axis": "下单转化率",
+            "emphasis": "A"
+          }
+        }
+      },
+      {
+        "id": "caption",
+        "start": 9.8,
+        "end": 12.4,
+        "frames": [
+          294,
+          372
+        ],
+        "text": "A 的下单转化率是 B 的 2 倍。",
+        "emphasis_words": [
+          "2 倍"
+        ],
+        "emotion": "点题",
+        "motion": "上方数据原位保持；左下字幕短线出现并揭示一句结论。",
+        "beats": [
+          294,
+          306,
+          364
+        ],
+        "cues": [
+          {
+            "from": 294,
+            "to": 306,
+            "action": "结论字幕进入"
+          },
+          {
+            "from": 306,
+            "to": 364,
+            "action": "结论及原数据共同停留"
+          },
+          {
+            "from": 364,
+            "to": 372,
+            "action": "字幕与图表一起淡出"
+          }
+        ],
+        "component": {
+          "name": "LowerThird",
+          "block": "caption-clip-wipe",
+          "props": {
+            "text": "A 的下单转化率是 B 的 2 倍。",
+            "anchor": "lower-left",
+            "underlay": "保留上一镜图表的最终状态",
+            "maxLines": 2
+          }
+        }
+      },
+      {
+        "id": "lockup",
+        "start": 12.4,
+        "end": 15,
+        "frames": [
+          372,
+          450
+        ],
+        "text": "星启 OPC",
+        "emphasis_words": [
+          "星启 OPC"
+        ],
+        "emotion": "收束",
+        "motion": "完整矢量字标作为整体淡入，末帧保持。",
+        "beats": [
+          372,
+          384
+        ],
+        "cues": [
+          {
+            "from": 372,
+            "to": 384,
+            "action": "完整字标淡入"
+          },
+          {
+            "from": 384,
+            "to": 450,
+            "action": "静止停留直至片尾"
+          }
+        ],
+        "component": {
+          "name": "LogoOut",
+          "block": "logo-outro",
+          "props": {
+            "src": "local_assets.logo[theme]",
+            "fit": "contain",
+            "padding": 0,
+            "backplate": false,
+            "preserveAspectRatio": true,
+            "tagline": "",
+            "url": ""
+          }
+        }
+      }
+    ]
+  },
+  "animation": {
+    "entryFrames": 12,
+    "staggerFrames": 4,
+    "exitFrames": 8,
+    "ease": [
+      0.22,
+      1,
+      0.36,
+      1
+    ],
+    "rules": [
+      "rules/stat-bars-and-fills",
+      "underline_sweep",
+      "slide_bottom",
+      "fade_in",
+      "fade_out"
+    ],
+    "coordinate_notes": "所有元素在列出的锚点停止。进入最多平移 24 像素，停留期间镜头固定；图表帧 186 起两根填充完全静止直至 364。"
+  },
+  "layout": {
+    "wide": {
+      "title": {
+        "anchor": [
+          120,
+          350
+        ],
+        "fontPx": 116,
+        "motifBounds": [
+          1160,
+          212,
+          1730,
+          818
+        ]
+      },
+      "steps": {
+        "anchor": [
+          120,
+          280
+        ],
+        "titleFontPx": 76,
+        "columnStarts": [
+          120,
+          685,
+          1250
+        ],
+        "rowY": 540
+      },
+      "chart": {
+        "heading": [
+          120,
+          154
+        ],
+        "rowLabelX": 120,
+        "trackX": 670,
+        "trackWidth": 1070,
+        "trackCentersY": [
+          432,
+          610
+        ],
+        "axisY": 702,
+        "railHeight": 20
+      },
+      "caption": {
+        "anchor": [
+          120,
+          825
+        ],
+        "maxWidth": 1550,
+        "fontPx": 50
+      },
+      "lockup": {
+        "center": [
+          960,
+          540
+        ],
+        "width": 630
+      }
+    },
+    "portrait": {
+      "title": {
+        "anchor": [
+          88,
+          335
+        ],
+        "fontPx": 90,
+        "motifBounds": [
+          240,
+          850,
+          910,
+          1420
+        ]
+      },
+      "steps": {
+        "anchor": [
+          88,
+          306
+        ],
+        "titleFontPx": 72,
+        "stackX": 88,
+        "stackY": [
+          650,
+          870,
+          1090
+        ]
+      },
+      "chart": {
+        "heading": [
+          88,
+          276
+        ],
+        "rowLabelX": 88,
+        "trackX": 88,
+        "trackWidth": 842,
+        "labelTopY": [
+          555,
+          917
+        ],
+        "trackCentersY": [
+          740,
+          1102
+        ],
+        "axisY": 1204,
+        "railHeight": 22
+      },
+      "caption": {
+        "anchor": [
+          88,
+          1390
+        ],
+        "maxWidth": 842,
+        "fontPx": 54
+      },
+      "lockup": {
+        "center": [
+          540,
+          905
+        ],
+        "width": 650
+      }
+    },
+    "unit": "px",
+    "notes": "竖版步骤纵排，标签和读数置于同一行，轨道占下一行；横版左侧人数、右侧轨道。最终值保留 A/B 文字与百分号，完整可读。"
+  },
+  "qa_frames": {
+    "title": 36,
+    "steps": 132,
+    "chart": 234,
+    "lowerThird": 332,
+    "lockup": 414
+  }
+}

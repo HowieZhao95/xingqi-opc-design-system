@@ -1,0 +1,38 @@
+{
+  "groups": [
+    {"id":"foundation","name":"基础规范","use":"品牌字标、设计变量与排版尺度。","guide":"brand","mark":"base"},
+    {"id":"web","name":"网页组件","use":"构成网页的标题、证据、读数与交互。","guide":"web","mark":"web"},
+    {"id":"slides","name":"汇报版式","use":"从提出问题到落下判断的九种页面。","guide":"slides","mark":"slide"},
+    {"id":"motion","name":"基础 MG","use":"让文字、步骤与数据依次入画。","guide":"motion","mark":"motion"},
+    {"id":"hud","name":"光学 HUD","use":"可叠在实景上的曲面、探针与遥测动效。","guide":"hud-mg","mark":"hud"},
+    {"id":"uhd","name":"UHD 实景","use":"给现场素材或生成场景配准标题、光迹与读数。","guide":"uhd","mark":"field"}
+  ],
+  "foundations": [
+    {"key":"brand","name":"品牌字标","description":"C2 定稿的八芒星、双线斜环与完整字标。","guide":"brand","tags":["Logo","标志","反白","透明","C2"],"rules":["暗底选反白字标，亮底选暗色字标。按字标所在局部的明暗选择。","保留原始比例和透明背景，内边距为零。使用定稿的完整轮廓。"]},
+    {"key":"color","name":"色彩角色","description":"按用途选择颜色，在深浅两套主题中保留相同语义。","guide":"brand","tags":["颜色","色板","tokens","色值"],"rules":["主色用于当前状态、重点读数与主操作。并列样本同时写出名称与计量单位。","画布、面板、衬底和遮罩各用自己的语义变量。点击色样可取当前值。"]},
+    {"key":"type","name":"字体与字阶","description":"用四组字形区分标题、正文、读数与刻度。","guide":"type","tags":["字体","标题","数字","typography"],"rules":["标题使用站酷庆科黄油体，正文使用 Noto Sans SC。数字用 Unbounded，英文编号与刻度用 Space Mono。","汇报内容标题参考 72–80px，正文 32–42px。网页正文参考 15–19px。"]},
+    {"key":"grid","name":"网格与安全区","description":"用同一套对齐关系安排网页、横版汇报与 UHD 画面。","guide":"type","tags":["画幅","字号","网格","安全区","4K","版心"],"rules":["汇报以 1920 × 1080 为画布。12 栏，左右各 120px，上下各 100px，栏距 24px。","横向 UHD 按 2 倍使用这一套坐标。竖向 UHD 重排内容，底部约 600px 留给平台控件。"]},
+    {"key":"edges","name":"圆角与间距","description":"认识胶囊、面板和 8px 间距基准在组件中的用法。","guide":"type","tags":["圆角","间距","边界","按钮","spacing"],"rules":["按钮和短轨道可用胶囊，常规控件圆角 12–16px，内容面板圆角 18–28px。","间距以 8px 为基准。标题贴近所属内容，独立段落之间加大距离。"]},
+    {"key":"layers","name":"面板与弹窗","description":"在页面、内容面板与内嵌区之间建立清晰层级。","guide":"web","tags":["弹层","遮罩","背景","modal","嵌套"],"rules":["可见嵌套最多三层。弹窗本体独立成为根层，再容纳面板和内嵌区域。","模态层使用实色底。深色遮罩 72%，亮色 28%。关闭后键盘焦点返回触发按钮。"]},
+    {"key":"tempo","name":"动效节奏","description":"看三组读数依次进场、停留和退场。","guide":"motion","tags":["缓动","错峰","动画","时间","easing"],"rules":["基础 MG 在 30 fps 下使用 12 帧入场、4 帧错峰、8 帧退出。60 fps 时这些帧数等比增加。","图表停稳后再显示结论。系统开启减弱动态效果时直接呈现可读状态。"]},
+    {"key":"imagery","name":"图形与实景","description":"从两张作品印样到实景取景，保持素材的身份与指向。","guide":"brand","tags":["摄影","图片","影像","图案","印样","作品","环纹","波纹"],"rules":["海报 A 使用薄荷环纹，B 使用丁香紫波纹。每张海报的标记跟随自己的样本。","实景画面为主体保留空间。让线网贴住物体，引线落到测点，衬底限于文字与读数所在区域。"]},
+    {"key":"controls","name":"交互状态","description":"比较主次按钮、选中状态、禁用状态与键盘焦点。","guide":"web","tags":["按钮","选中","禁用","键盘","focus","hover"],"rules":["一组操作只设一个主按钮。选中时同时改变字样和 aria-pressed。","焦点使用清晰轮廓，悬停和按下以约 180ms 的过渡回应。禁用状态与可操作项分开标示。"]},
+    {"key":"reading","name":"数据与可读性","description":"让一条读数同时交代分子、分母、范围和出处。","guide":"web","tags":["无障碍","对比度","数据","空状态","WCAG"],"rules":["不同样本使用同一刻度。有效的零与缺少样本使用不同标记。","正文以 4.5:1、大字以 3:1 为对比度目标。颜色之外保留文字、编号或可见焦点。"]}
+  ],
+  "webVariants": {
+    "comparison":[{"id":"empty","name":"无访客","props":{"rows":[{"label":"海报 A","orders":0,"visitors":0},{"label":"海报 B","orders":0,"visitors":40}]}}],
+    "metric":[{"id":"zero","name":"零订单","props":{"value":"0","note":"0 位下单者 / 40 位访客，同一周的教学样本。"}}],
+    "steps":[{"id":"start","name":"第一步","props":{"current":0}},{"id":"finish","name":"最后一步","props":{"current":2}}],
+    "brand":[{"id":"symbol","name":"独立图形","props":{"symbol":true}}],
+    "notice":[{"id":"source","name":"来源说明","props":{"title":"样本范围","body":"本周参与教学演示的两张海报，访客按人去重。"}}]
+  },
+  "overlays":[
+    {"key":"title","name":"场景标题","description":"按现场局部明暗选择字标与标题衬底。"},
+    {"key":"pin","name":"空间标注","description":"把归一化锚点钉在展板、设备或工作台上。"},
+    {"key":"metric","name":"现场读数","description":"并列显示百分比、下单人数与访客数。"},
+    {"key":"caption","name":"讲解字幕","description":"将两行讲解留在动作和人物之外。"}
+  ],
+  "additional":[
+    {"id":"web/starter","name":"网页起步页","description":"将品牌、步骤和数据组件放进完整的响应式页面。","page":"web-starter.html","tags":["完整页面","模板","starter"]}
+  ]
+}
